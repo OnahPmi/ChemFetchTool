@@ -66,7 +66,7 @@ with st.sidebar:
   properties_string = ",".join(properties)
 
   col1, col2, col3 = st.columns([1, 1, 1])
-  button = col2.button("Retrieve Properties", type="primary")
+  button = col2.button("**:white[Submit Job]**", type="primary")
   # col1.button('Rerun')
 
 st.divider()
@@ -87,22 +87,11 @@ def retrieveProperties(df, mol_col, properties):
     completed_items += 1
     progress = int((completed_items / total_items) * 100)
     my_progress_bar.progress(progress)
-    status_text.text(f"{progress_text} {progress}%")
-  status_text.text("Operation complete! ⌛")
+    status_text.success(f"##### Retrieving the selected properties for {total_items} compounds. {progress_text} {progress}%")
+  status_text.success("#### Operation complete!")
   my_progress_bar.empty()
   retrieved_properties_df = pd.DataFrame(retrieved_properties)
   return retrieved_properties_df
-
-
-
-# def retrieveProperties(df, mol_col, properties):
-#   retrieved_properties = dd(list)
-#   for name in df[mol_col]:
-#     retrieved_properties[mol_col].append(name)
-#     for prop in properties:
-#       retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
-#   retrieved_properties_df = pd.DataFrame(retrieved_properties)
-#   return retrieved_properties_df
 
 def addSNoAsIndex(df):
     df_len = len(df)
@@ -122,7 +111,7 @@ if button:
       if properties_string != "":
         uploaded_names =  uploaded_names.strip(" ,:;.''").split("\n")
         uploaded_names_df = pd.DataFrame(uploaded_names, columns=["Compound"])
-        with st.spinner("Wait for your results. You may take a walk while :rainbow[ChemFetchTool] retrieve the selected properties..."):
+        with st.spinner("##### Wait for your results. You may take a walk while :rainbow[ChemFetchTool] retrieve the selected properties..."):
           retrieved_properties_df = retrieveProperties(uploaded_names_df, "Compound", properties)
         retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
         st.write(retrieved_properties_df)
@@ -131,14 +120,14 @@ if button:
 
     elif uploaded_file_df is not None:
       if mol_names is not None and properties_string != "":
-        with st.spinner("### Wait for your results. You may take a walk while :rainbow[ChemFetchTool] retrieve the selected properties..."):
+        with st.spinner("##### Wait for your results. You may take a walk while :rainbow[ChemFetchTool] retrieve the selected properties..."):
           retrieved_properties_df = retrieveProperties(uploaded_file_df, mol_names, properties)
         retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
         st.write(retrieved_properties_df)
       else:
         st.warning("#### Both molecule column and at least one properties must be selected")
   except:
-    st.warning("#### An unknown error occured")
+    st.warning("#### An unknown error occured. Check your connection")
 
 st.divider()
 
@@ -155,8 +144,7 @@ The :rainbow[ChemFetchTool] offers two convenient ways to retrieve compound prop
 1. **:blue[Paste directly:]** Simply copy and paste the names of your molecules into the designated space in the sidebar.
 2. **:blue[Upload a file:]** If you have a list of compound names in a CSV or TXT file, upload it in the designated space in the sidebar. 
 You can then select the specific properties you'd like to retrieve.
-Once you've provided your compounds and chosen the desired properties, click the "Retrieve" button to initiate the process.
-
+Once you've provided your compounds and chosen the desired properties, click the **:red[|Submit Job|]** button to initiate the process.
 """) 
 
 st.divider()
