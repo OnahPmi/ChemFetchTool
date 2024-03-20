@@ -100,7 +100,7 @@ with col_b:
     st.session_state["uploaded_names"] = None
   st.write("##### :blue[Paste your compound names here] :red[(Must be one per line)]")
   uploaded_names = st.text_area("Paste your compound names here", value=None, height=105, max_chars=None, label_visibility="collapsed",
-                                placeholder="E.g.\nCycloheterophyllin\nArtonin A\nGinkgetin")
+                                placeholder="E.g.\nQuercetin\nGlucuronic Acid\n(+)-Catechin 5-gallate")
   if uploaded_names:
     st.session_state["uploaded_names"] = uploaded_names
 
