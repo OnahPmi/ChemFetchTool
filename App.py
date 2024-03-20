@@ -21,31 +21,31 @@ st.set_page_config(
 
 # @st.cache_data
 def retrieveProperties(df, mol_col, properties):
-  with st.spinner("##### :rainbow[ChemFetchTool] is retrieving the selected properties. You may take a walk. Results will be ready soon ⏳"):
-    total_items = len(df)
-    completed_items = 0
-    my_progress_bar = st.progress(0)
-    progress_text = f"Retrieving the selected properties for {total_items} compounds"
-    status_text = st.empty()
-    status_text.write(f"##### {progress_text}. 0 set retrieved ⟶ 0% complete")
+  # with st.spinner("##### :rainbow[ChemFetchTool] is retrieving the selected properties. You may take a walk. Results will be ready soon ⏳"):
+  total_items = len(df)
+  completed_items = 0
+  my_progress_bar = st.progress(0)
+  progress_text = f":rainbow[ChemFetchTool] is retrieving the selected properties for {total_items} compounds"
+  status_text = st.empty()
+  status_text.write(f"##### {progress_text}. 0 set retrieved ⟶ 0% complete")
 
-    retrieved_properties = dd(list)
-    
-    for name in df[mol_col]:
-      retrieved_properties[mol_col].append(name)
-      for prop in properties:
-        retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
-      completed_items += 1
-      progress = int((completed_items/total_items)*100)
-      my_progress_bar.progress(progress)
-      if completed_items == 1:
-        status_text.write(f"##### {progress_text}. {completed_items} set retrieved ⟶ {progress}% complete")
-      else:
-        status_text.write(f"##### {progress_text}. {completed_items} sets retrieved ⟶ {progress}% complete")
-    status_text.success("#### Operation complete!")
-    my_progress_bar.empty()
-    retrieved_properties_df = pd.DataFrame(retrieved_properties)
-    return retrieved_properties_df
+  retrieved_properties = dd(list)
+
+  for name in df[mol_col]:
+    retrieved_properties[mol_col].append(name)
+    for prop in properties:
+      retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
+    completed_items += 1
+    progress = int((completed_items/total_items)*100)
+    my_progress_bar.progress(progress)
+    if completed_items == 1:
+      status_text.write(f"##### {progress_text}. {completed_items} set retrieved ⟶ {progress}% complete")
+    else:
+      status_text.write(f"##### {progress_text}. {completed_items} sets retrieved ⟶ {progress}% complete")
+  status_text.success("#### Operation complete!")
+  my_progress_bar.empty()
+  retrieved_properties_df = pd.DataFrame(retrieved_properties)
+  return retrieved_properties_df
 
 def addSNoAsIndex(df):
     df_len = len(df)
@@ -67,13 +67,20 @@ uploaded_file_df = None
 uploaded_names = None
 
 with col_b:
+  if "uploaded_names" not in st.session_state:
+    st.session_state["uploaded_names"] = None
   st.write("##### :blue[Paste your compound names here] :red[(Must be one per line)]")
-  uploaded_names = st.text_area("Paste your compound names here", value=None, height=105, max_chars=None, 
-                                placeholder="E.g.\nCycloheterophyllin\nArtonin A\nGinkgetin",
-                                label_visibility="collapsed")
+  uploaded_names = st.text_area("Paste your compound names here", value=None, height=105, max_chars=None, label_visibility="collapsed",
+                                placeholder="E.g.\nCycloheterophyllin\nArtonin A\nGinkgetin")
+  if uploaded_names:
+    st.session_state["uploaded_names"] = uploaded_names
 
+  if "uploaded_file" not in st.session_state:
+    st.session_state["uploaded_file"] = None
   st.write("##### :blue[Or Choose a file] :red[(Must be a CSV or TXT file)]")
   uploaded_file = st.file_uploader("Or Choose a file", type=['csv', 'txt'], label_visibility="collapsed")
+  if uploaded_file:
+    st.session_state["uploaded_file"] = uploaded_file
 
   if uploaded_file is not None:
     uploaded_file_df = pd.read_csv(uploaded_file)
@@ -98,13 +105,11 @@ with col_b:
     properties.append("MolecularWeight")
   if RBC:
     properties.append("RotatableBondCount")
-  
-  properties_string = ",".join(properties)
 
+  st.divider()
   col1, col2, col3 = st.columns([1, 1, 1])
   button = col2.button("**:white[Submit Job]**", type="primary")
   # col1.button('Rerun')
-
   st.divider()
 
 ########################################################################################################################################################
@@ -123,12 +128,13 @@ with col_a:
   if button:
     try:
       if uploaded_file_df is not None and uploaded_names is not None:
-        st.warning("#### Paste the molecules names or submit a molecule file not both")
+        st.warning("#### Paste the molecules names or submit a molecule file but NOT both")
       
       elif uploaded_file_df is None and uploaded_names is None:
         st.warning("#### Compound names or molecule file MUST be provided but NOT both")
+
       elif uploaded_names is not None:
-        if properties_string != "":
+        if properties:
           uploaded_names =  uploaded_names.strip(" ,:;.''").split("\n")
           uploaded_names_df = pd.DataFrame(uploaded_names, columns=["Compound"])
           retrieved_properties_df = retrieveProperties(uploaded_names_df, "Compound", properties)
@@ -138,7 +144,7 @@ with col_a:
           st.warning("#### At least one properties must be selected")
 
       elif uploaded_file_df is not None:
-        if mol_names is not None and properties_string != "":
+        if mol_names is not None and properties:
           retrieved_properties_df = retrieveProperties(uploaded_file_df, mol_names, properties)
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
           st.write(retrieved_properties_df)
@@ -147,24 +153,25 @@ with col_a:
     except:
       st.warning("#### An unknown error occured. Check your connection and resubmit Job!")
 
-  st.divider()
+    st.divider()
 
-  st.write("""
-  Scientific articles often list compounds with interesting pharmacological effects, but only by name. This poses a problem for researchers who 
-  need a computer-readable format to analyze these molecules. While searching PubChem for each compound's :blue[SMILES notation] (a machine-friendly 
-  representation) and other properties of choice is possible, it's time-consuming, and may often lead to errors.
+  else:
+    st.write("""
+    Scientific articles often list compounds with interesting pharmacological effects, but only by name. This poses a problem for researchers who 
+    need a computer-readable format to analyze these molecules. While searching PubChem for each compound's :blue[SMILES notation] (a machine-friendly 
+    representation) and other properties of choice is possible, it's time-consuming, and may often lead to errors.
 
-  To address this inefficiency, the :rainbow[ChemFetchTool] was developed. This freely available software simplifies the process of retrieving compound 
-  properties like SMILES, saving researchers valuable time.
+    To address this inefficiency, the :rainbow[ChemFetchTool] was developed. This freely available software simplifies the process of retrieving compound 
+    properties like SMILES, saving researchers valuable time.
 
-  The :rainbow[ChemFetchTool] offers two convenient ways to retrieve compound properties:
+    The :rainbow[ChemFetchTool] offers two convenient ways to retrieve compound properties:
 
-  1. **:blue[Paste directly:]** Simply copy and paste the names of your molecules into the designated space in the sidebar.
-  2. **:blue[Upload a file:]** If you have a list of compound names in a CSV or TXT file, upload it in the designated space in the sidebar. 
-  """) 
-  st.write("""
-  You can then select the specific properties you'd like to retrieve. Once you've provided your compounds and chosen the desired properties, 
-  click the **:red[|Submit Job|]** button to initiate the process.
-  """)
-
-  st.divider()
+    1. **:blue[Paste directly:]** Simply copy and paste the names of your molecules into the designated space in the sidebar.
+    2. **:blue[Upload a file:]** If you have a list of compound names in a CSV or TXT file, upload it in the designated space in the sidebar. 
+    """) 
+    st.write("""
+    You can then select the specific properties you'd like to retrieve. Once you've provided your compounds and chosen the desired properties, 
+    click the **:red[|Submit Job|]** button to initiate the process.
+    """)
+    st.divider()
+    
