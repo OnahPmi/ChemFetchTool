@@ -21,7 +21,7 @@ st.set_page_config(
 #                                                                       Functions                                                                      #
 ########################################################################################################################################################
 
-# @st.cache_data
+@st.cache_data
 def retrieveProperties(df, mol_col, properties):
   # with st.spinner("##### :rainbow[ChemFetchTool] is retrieving the selected properties. You may take a walk. Results will be ready soon ⏳"):
   total_items = len(df)
