@@ -86,7 +86,7 @@ def convert_df(df):
 #                                                                     page  division                                                                   #
 ########################################################################################################################################################
 
-col_a, col_b = st.columns([3, 1.6], gap="large")
+col_a, col_b = st.columns([3, 1.7], gap="large")
 
 ########################################################################################################################################################
 #                                                                     right column                                                                     #
@@ -96,13 +96,22 @@ uploaded_file_df = None
 uploaded_names = None
 
 with col_b:
-  if "uploaded_names" not in st.session_state:
-    st.session_state["uploaded_names"] = None
   st.write("##### :blue[Paste your compound names here] :red[(Must be one per line)]")
-  uploaded_names = st.text_area("Paste your compound names here", value=None, height=105, max_chars=None, label_visibility="collapsed",
-                                placeholder="E.g.\nQuercetin\nGlucuronic Acid\n(+)-Catechin 5-gallate")
-  if uploaded_names:
-    st.session_state["uploaded_names"] = uploaded_names
+  col_b1, col_b2 = st.columns([4.5, 1.5])
+  with col_b1:
+    if "uploaded_names" not in st.session_state:
+      st.session_state["uploaded_names"] = None
+    # st.write("##### :blue[Paste your compound names here] :red[(Must be one per line)]")
+    uploaded_names = st.text_area("Paste your compound names here", value=None, height=105, max_chars=None, label_visibility="collapsed",
+                                  placeholder="E.g.\nQuercetin\nGlucuronic Acid\n(+)-Catechin 5-gallate", key="text")
+    if uploaded_names:
+      st.session_state["uploaded_names"] = uploaded_names
+
+  def clear():
+    st.session_state.text = None
+
+  with col_b2:
+    refresh_button = st.button("**:white[Clear Names]**", type="primary", on_click=clear)
 
   if "uploaded_file" not in st.session_state:
     st.session_state["uploaded_file"] = None
