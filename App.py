@@ -1,5 +1,7 @@
 import streamlit as st
-import time
+import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 import pandas as pd
 from collections import defaultdict as dd
 from PubChemAPI import getPropertiesFromPubchem
@@ -25,7 +27,19 @@ def retrieveProperties(df, mol_col, properties):
   total_items = len(df)
   completed_items = 0
   my_progress_bar = st.progress(0)
-  progress_text = f":rainbow[ChemFetchTool] is retrieving the selected properties for {total_items} compounds"
+
+  no_of_properties = len(properties)
+  if total_items == 1:
+    if no_of_properties == 1:
+      progress_text = f":rainbow[ChemFetchTool] is retrieving {no_of_properties} selected property for {total_items} compound"
+    else:
+      progress_text = f":rainbow[ChemFetchTool] is retrieving {no_of_properties} selected properties for {total_items} compound"
+  else:
+    if no_of_properties == 1:
+      progress_text = f":rainbow[ChemFetchTool] is retrieving {no_of_properties} selected property for {total_items} compounds"
+    else:
+      progress_text = f":rainbow[ChemFetchTool] is retrieving {no_of_properties} selected properties for {total_items} compounds"
+
   status_text = st.empty()
   status_text.write(f"##### {progress_text}. 0 set retrieved ⟶ 0% complete")
 
@@ -42,7 +56,18 @@ def retrieveProperties(df, mol_col, properties):
       status_text.write(f"##### {progress_text}. {completed_items} set retrieved ⟶ {progress}% complete")
     else:
       status_text.write(f"##### {progress_text}. {completed_items} sets retrieved ⟶ {progress}% complete")
-  status_text.success("#### Operation complete!")
+
+  if total_items == 1:
+    if no_of_properties == 1:
+      status_text.success(f"#### :orange[Operation complete! {no_of_properties} selected property of {completed_items} compound successfully retrieved]")
+    else:
+      status_text.success(f"#### :orange[Operation complete! {no_of_properties} selected properties of {completed_items} compound successfully retrieved]")
+  else:
+    if no_of_properties == 1:
+      status_text.success(f"#### :orange[Operation complete! {no_of_properties} selected property of {completed_items} compounds successfully retrieved]")
+    else:
+      status_text.success(f"#### :orange[Operation complete! {no_of_properties} selected properties of {completed_items} compounds successfully retrieved]")
+
   my_progress_bar.empty()
   retrieved_properties_df = pd.DataFrame(retrieved_properties)
   return retrieved_properties_df
@@ -53,11 +78,15 @@ def addSNoAsIndex(df):
     df = df.set_index("S/No")
     return df
 
+@st.cache_data
+def convert_df(df):
+    return df.to_csv().encode('utf-8')
+
 ########################################################################################################################################################
 #                                                                     page  division                                                                   #
 ########################################################################################################################################################
 
-col_a, col_b = st.columns([3, 1.5], gap="large")
+col_a, col_b = st.columns([3, 1.6], gap="large")
 
 ########################################################################################################################################################
 #                                                                     right column                                                                     #
@@ -125,6 +154,7 @@ with col_a:
     st.subheader(":rainbow[From molecule names to properties]")
 
   st.divider()
+  
   if button:
     try:
       if uploaded_file_df is not None and uploaded_names is not None:
@@ -139,6 +169,10 @@ with col_a:
           uploaded_names_df = pd.DataFrame(uploaded_names, columns=["Compound"])
           retrieved_properties_df = retrieveProperties(uploaded_names_df, "Compound", properties)
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
+
+          csv = convert_df(retrieved_properties_df)
+          st.download_button(label="Download Properties as CSV", data=csv, file_name='Retrieved_properties_df.csv', mime='text/csv', type="primary",)
+
           st.write(retrieved_properties_df)
         else:
           st.warning("#### At least one properties must be selected")
@@ -147,11 +181,17 @@ with col_a:
         if mol_names is not None and properties:
           retrieved_properties_df = retrieveProperties(uploaded_file_df, mol_names, properties)
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
+
+          csv = convert_df(retrieved_properties_df)
+          st.download_button(label="Download Properties as CSV", data=csv, file_name='Retrieved_properties_df.csv', mime='text/csv', type="primary",)
+
           st.write(retrieved_properties_df)
         else:
-          st.warning("#### Both molecule column and at least one properties must be selected")
+          st.warning("#### The column with molecule names and at least one properties must be selected")
+    except (requests.RequestException, ConnectionError):
+      st.warning("#### Connection error occured. Ensure a stable network connection and resubmit Job!")
     except:
-      st.warning("#### An unknown error occured. Check your connection and resubmit Job!")
+      st.warning("#### An unknown error occured. Ensure a stable network connection and resubmit Job!")
 
     st.divider()
 
@@ -174,4 +214,3 @@ with col_a:
     click the **:red[|Submit Job|]** button to initiate the process.
     """)
     st.divider()
-    
