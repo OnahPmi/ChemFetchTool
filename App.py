@@ -29,13 +29,15 @@ def retrieveProperties(df, mol_col, properties):
 
   retrieved_properties = dd(list)
   for name in df[mol_col]:
+    if completed_items < 1:
+      status_text.success(f"###### {progress_text}. 0 set retrieved. (0% completed) Please wait ⏳")
     retrieved_properties[mol_col].append(name)
     for prop in properties:
       retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
     completed_items += 1
     progress = int((completed_items/total_items)*100)
     my_progress_bar.progress(progress)
-    if completed_items <= 1:
+    if completed_items == 1:
       status_text.success(f"###### {progress_text}. {completed_items} set retrieved. ({progress}% completed) Please wait ⏳")
     else:
       status_text.success(f"###### {progress_text}. {completed_items} sets retrieved. ({progress}% completed) Please wait ⏳")
