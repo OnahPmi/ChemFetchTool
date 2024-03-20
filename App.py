@@ -107,11 +107,11 @@ with col_b:
     if uploaded_names:
       st.session_state["uploaded_names"] = uploaded_names
 
-  def clear():
+  def clearTextArea():
     st.session_state.text = None
 
   with col_b2:
-    refresh_button = st.button("**:white[Clear Names]**", type="primary", on_click=clear)
+    refresh_button = st.button("**:white[Clear Names]**", type="secondary", on_click=clearTextArea)
 
   if "uploaded_file" not in st.session_state:
     st.session_state["uploaded_file"] = None
