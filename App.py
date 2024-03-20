@@ -2,6 +2,7 @@ import streamlit as st
 import time
 import pandas as pd
 from collections import defaultdict as dd
+from PubChemAPI import getPropertiesFromPubchem
 
 ########################################################################################################################################################
 #                                                                       Page Setup                                                                     #
@@ -18,24 +19,6 @@ st.set_page_config(
 #                                                                       Functions                                                                      #
 ########################################################################################################################################################
 
-def getPropertiesFromPubchem(name, prop):
-    # retry mechanism
-    session = requests.Session()
-    retries = Retry(total=5, backoff_factor=0.1, status_forcelist=[500, 502, 503, 504])
-    session.mount('https://', HTTPAdapter(max_retries=retries))
-    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/{prop}/txt"
-    try:
-        response = session.get(url, timeout=10)
-        status = response.status_code
-        if status == 200:
-            return response.text.strip()
-        else:
-            return "Not Found"
-    except (requests.exceptions.RequestException):
-        return "RequestException Errors. Ensure a stable connection"
-    except (ConnectionError):
-        return "Connection Errors. Ensure a stable connection"
-
 # @st.cache_data
 def retrieveProperties(df, mol_col, properties):
   total_items = len(df)
@@ -43,24 +26,19 @@ def retrieveProperties(df, mol_col, properties):
   my_progress_bar = st.progress(0)
   progress_text = f"Retrieving the selected properties for {total_items} compounds"
   status_text = st.empty()
-  errors = ("RequestException Errors. Ensure a stable connection", "Connection Errors. Ensure a stable connection")
+
   retrieved_properties = dd(list)
   for name in df[mol_col]:
-    for prop in properties:
-      retrieved_property = getPropertiesFromPubchem(name, prop)
-    if retrieved_property in errors:
-      st.warning("Connection Errors. Ensure a stable connection")
-      break
     retrieved_properties[mol_col].append(name)
-    retrieved_properties[prop].append(retrieved_property)
+    for prop in properties:
+      retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
     completed_items += 1
     progress = int((completed_items/total_items)*100)
     my_progress_bar.progress(progress)
     if completed_items <= 1:
-      status_text.success(f"##### {progress_text}. {completed_items} set retrieved. ({progress}% completed) Please wait ⏳")
+      status_text.success(f"###### {progress_text}. {completed_items} set retrieved. ({progress}% completed) Please wait ⏳")
     else:
-      status_text.success(f"##### {progress_text}. {completed_items} sets retrieved. ({progress}% completed) Please wait ⏳")
-
+      status_text.success(f"###### {progress_text}. {completed_items} sets retrieved. ({progress}% completed) Please wait ⏳")
   status_text.success("#### Operation complete!")
   my_progress_bar.empty()
   retrieved_properties_df = pd.DataFrame(retrieved_properties)
@@ -163,7 +141,7 @@ with col_a:
         else:
           st.warning("#### Both molecule column and at least one properties must be selected")
     except:
-      st.warning("#### An unknown error occured. Check your connection")
+      st.warning("#### An unknown error occured. Check your connection and resubmit Job!")
 
   st.divider()
 
