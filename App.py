@@ -21,30 +21,31 @@ st.set_page_config(
 
 # @st.cache_data
 def retrieveProperties(df, mol_col, properties):
-  total_items = len(df)
-  completed_items = 0
-  my_progress_bar = st.progress(0)
-  progress_text = f"Retrieving the selected properties for {total_items} compounds"
-  status_text = st.empty()
+  with st.spinner("##### :rainbow[ChemFetchTool] is retrieving the selected properties. You may take a walk. Results will be ready soon ⏳"):
+    total_items = len(df)
+    completed_items = 0
+    my_progress_bar = st.progress(0)
+    progress_text = f"Retrieving the selected properties for {total_items} compounds"
+    status_text = st.empty()
+    status_text.write(f"##### {progress_text}. 0 set retrieved ⟶ 0% complete")
 
-  retrieved_properties = dd(list)
-  for name in df[mol_col]:
-    if completed_items < 1:
-      status_text.success(f"###### {progress_text}. 0 set retrieved. (0% completed) Please wait ⏳")
-    retrieved_properties[mol_col].append(name)
-    for prop in properties:
-      retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
-    completed_items += 1
-    progress = int((completed_items/total_items)*100)
-    my_progress_bar.progress(progress)
-    if completed_items == 1:
-      status_text.success(f"###### {progress_text}. {completed_items} set retrieved. ({progress}% completed) Please wait ⏳")
-    else:
-      status_text.success(f"###### {progress_text}. {completed_items} sets retrieved. ({progress}% completed) Please wait ⏳")
-  status_text.success("#### Operation complete!")
-  my_progress_bar.empty()
-  retrieved_properties_df = pd.DataFrame(retrieved_properties)
-  return retrieved_properties_df
+    retrieved_properties = dd(list)
+    
+    for name in df[mol_col]:
+      retrieved_properties[mol_col].append(name)
+      for prop in properties:
+        retrieved_properties[prop].append(getPropertiesFromPubchem(name, prop))
+      completed_items += 1
+      progress = int((completed_items/total_items)*100)
+      my_progress_bar.progress(progress)
+      if completed_items == 1:
+        status_text.write(f"##### {progress_text}. {completed_items} set retrieved ⟶ {progress}% complete")
+      else:
+        status_text.write(f"##### {progress_text}. {completed_items} sets retrieved ⟶ {progress}% complete")
+    status_text.success("#### Operation complete!")
+    my_progress_bar.empty()
+    retrieved_properties_df = pd.DataFrame(retrieved_properties)
+    return retrieved_properties_df
 
 def addSNoAsIndex(df):
     df_len = len(df)
@@ -53,10 +54,14 @@ def addSNoAsIndex(df):
     return df
 
 ########################################################################################################################################################
-#                                                                     Sidebar  b                                                                       #
+#                                                                     page  division                                                                   #
 ########################################################################################################################################################
 
-col_a, col_b = st.columns([3, 1.8], gap="large")
+col_a, col_b = st.columns([3, 1.5], gap="large")
+
+########################################################################################################################################################
+#                                                                     right column                                                                     #
+########################################################################################################################################################
 
 uploaded_file_df = None
 uploaded_names = None
@@ -103,7 +108,7 @@ with col_b:
   st.divider()
 
 ########################################################################################################################################################
-#                                                                     Sidebar  a                                                                       #
+#                                                                     left column                                                                      #
 ########################################################################################################################################################
 
 with col_a:
@@ -122,13 +127,11 @@ with col_a:
       
       elif uploaded_file_df is None and uploaded_names is None:
         st.warning("#### Compound names or molecule file MUST be provided but NOT both")
-
       elif uploaded_names is not None:
         if properties_string != "":
           uploaded_names =  uploaded_names.strip(" ,:;.''").split("\n")
           uploaded_names_df = pd.DataFrame(uploaded_names, columns=["Compound"])
-          with st.spinner("##### Wait for your results. You may take a walk while :rainbow[ChemFetchTool] retrieve the selected properties..."):
-            retrieved_properties_df = retrieveProperties(uploaded_names_df, "Compound", properties)
+          retrieved_properties_df = retrieveProperties(uploaded_names_df, "Compound", properties)
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
           st.write(retrieved_properties_df)
         else:
@@ -136,8 +139,7 @@ with col_a:
 
       elif uploaded_file_df is not None:
         if mol_names is not None and properties_string != "":
-          with st.spinner("##### Wait for your results. You may take a walk while :rainbow[ChemFetchTool] retrieve the selected properties..."):
-            retrieved_properties_df = retrieveProperties(uploaded_file_df, mol_names, properties)
+          retrieved_properties_df = retrieveProperties(uploaded_file_df, mol_names, properties)
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
           st.write(retrieved_properties_df)
         else:
