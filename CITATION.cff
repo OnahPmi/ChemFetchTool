@@ -5,13 +5,10 @@ message: "If you use ChemFetchTool in your research, please cite it using this i
 authors:
 - family-names: "Onah"
   given-names: "Emmanuel"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-- family-names: "Bot"
-  given-names: "Hew"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-title: "ChemFetchTool "
+  orcid: "https://orcid.org/0000-0003-2201-7607"
+title: "ChemFetchTool"
 version: 1.1.0
-doi: 10.5281/zenodo.10850253  # Zenodo DOI
+doi: 10.5281/zenodo.10850253
 date-released: 2024-03-22
 license: "MIT License"
 description: ChemFetchTool is a web-based tool that automates retrieval of SMILES notation and other properties of chemical compounds from the PubChem database.
