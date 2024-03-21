@@ -1,4 +1,4 @@
-# ChemFetchTool: Automate SMILES Retrieval from PubChem
+# ChemFetchTool: Automate SMILES Retrieval from PubChem [![DOI](https://zenodo.org/badge/774332379.svg)](https://zenodo.org/doi/10.5281/zenodo.10850252)
 **ChemFetchTool** is a web-based user-friendly tool designed to streamline the process of retrieving SMILES notation (machine-readable representation) and other properties for chemical compounds directly from the PubChem database employing the PubChem PUG REST API endpoint for automated retrieval of molecular properties given only the compound name(s).
 
 # Problem:
