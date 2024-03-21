@@ -235,9 +235,9 @@ with col_a:
   You can then select the specific properties you'd like to retrieve. Once you've provided your compounds and chosen the desired properties, 
   click the **:red[|Submit Job|]** button to initiate the process.
   """)
-st.write("""
-  If you make use of ChemFetchTool in your worrk, cite it as follows:
-  
-  Emmanuel Onah. (2024). OnahPmi/ChemFetchTool: ChemFetchTool (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.10850253
-""")
-  st.divider()
+  st.write("""
+    If you make use of ChemFetchTool in your worrk, cite it as follows:
+
+    Emmanuel Onah. (2024). OnahPmi/ChemFetchTool: ChemFetchTool (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.10850253.
+  """)
+    st.divider()
