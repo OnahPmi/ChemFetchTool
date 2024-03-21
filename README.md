@@ -23,7 +23,7 @@ ChemFetchTool eliminates this tedious process. By leveraging the freely availabl
 3. Select the desired properties you want to retrieve.
 4. Click the "Submit Job" button to initiate the process.
 
-# Installation (if applicable):
+# Installation:
 No installation is required.
 
 # License:
