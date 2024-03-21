@@ -236,7 +236,7 @@ with col_a:
   click the **:red[|Submit Job|]** button to initiate the process.
   """)
   st.write("""
-    If you make use of :rainbow[ChemFetchTool] in your work, cite it as follows:
+    If you make use of **:rainbow[ChemFetchTool]** in your work, cite it as follows:
 
     **Emmanuel Onah. (2024). __OnahPmi/ChemFetchTool: ChemFetchTool (v1.0.0)__. Zenodo. https://doi.org/10.5281/zenodo.10850253.**
   """)
