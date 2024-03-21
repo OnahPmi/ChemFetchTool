@@ -41,4 +41,4 @@ ChemFetchTool empowers researchers with the following advantages:
 # Citation:
 If you make use of ChemFetchTool in your work, cite it as follows:
 
-Onah, E. (2024). ChemFetchTool (Version 1.1.0) [Computer software]. https://doi.org/10.5281/zenodo.10850870.
+Onah, E. (2024). ChemFetchTool (Version 1.1.0) [Computer software]. https://zenodo.org/doi/10.5281/zenodo.10850252.
