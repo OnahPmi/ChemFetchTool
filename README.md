@@ -18,8 +18,8 @@ ChemFetchTool eliminates this tedious process. By leveraging the freely availabl
 # How to Use:
 1. Visit ChemFetchTool (link to be provided upon deployment).
 2. Choose your input method:
- - Paste your compound names directly into the provided space.
- - Upload a file containing your list of compound names (CSV or TXT format).
+    - Paste your compound names directly into the provided space.
+    - Upload a file containing your list of compound names (CSV or TXT format).
 3. Select the desired properties you want to retrieve.
 4. Click the "Submit Job" button to initiate the process.
 
@@ -27,7 +27,7 @@ ChemFetchTool eliminates this tedious process. By leveraging the freely availabl
 No installation is required.
 
 # License:
-ChemFetchTool is freely available under the MIT License, enabling open access and unrestricted use.
+ChemFetchTool is freely available under the MIT License, enabling open access and unrestricted use. [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Feedback and Contribution:
 We welcome your feedback and suggestions for further enhancing ChemFetchTool. Feel free to reach out and share your thoughts. Additionally, if you're interested in contributing to the codebase, please don't hesitate to get in touch.
@@ -37,5 +37,3 @@ ChemFetchTool empowers researchers with the following advantages:
 - Saves significant time compared to manual retrieval.
 - Minimizes the risk of errors associated with manual data entry.
 - Streamlines the workflow for cheminformatics tasks.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
