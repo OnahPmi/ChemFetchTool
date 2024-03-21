@@ -37,3 +37,8 @@ ChemFetchTool empowers researchers with the following advantages:
 - Saves significant time compared to manual retrieval.
 - Minimizes the risk of errors associated with manual data entry.
 - Streamlines the workflow for cheminformatics tasks.
+
+# Citation:
+If you make use of ChemFetchTool in your work, cite it as follows:
+
+Emmanuel Onah. (2024). OnahPmi/ChemFetchTool: ChemFetchTool (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.10850253.
