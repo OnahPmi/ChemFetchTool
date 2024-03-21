@@ -161,7 +161,7 @@ with col_a:
     st.title(":rainbow[ChemFetchTool]")
     st.divider()
   with col22:
-    st.image("favicon.png", width=420, use_column_width=False)
+    st.image("favicon.png", width=420, use_column_width=True)
     st.subheader(":rainbow[From molecule names to properties]")
 
   st.divider()
