@@ -111,7 +111,7 @@ with col_b:
     st.session_state.text = None
 
   with col_b2:
-    refresh_button = st.button("**:white[Clear Names]**", type="secondary", on_click=clearTextArea, help="Clear the text area when clicked")
+    refresh_button = st.button("**:white[Clear Names]**", type="secondary", on_click=clearTextArea, help="Clears the text area when clicked")
 
   if "uploaded_file" not in st.session_state:
     st.session_state["uploaded_file"] = None
