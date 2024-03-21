@@ -11,5 +11,5 @@ version: 1.1.0
 doi: 10.5281/zenodo.10850870
 date-released: 2024-03-22
 license: "MIT License"
-description: ChemFetchTool is a web-based tool that automates retrieval of SMILES notation and other properties of chemical compounds from the PubChem database.
+description: "ChemFetchTool is a web-based tool that automates retrieval of SMILES notation and other properties of chemical compounds from the PubChem database."
 url: "https://chemfetchtool.streamlit.app/"
