@@ -16,7 +16,7 @@ ChemFetchTool eliminates this tedious process. By leveraging the freely availabl
 - Select the specific properties you desire to retrieve, including SMILES notation and more.
 
 # How to Use:
-1. Visit ChemFetchTool (chemfetchtool.streamlit.app/).
+1. Visit ChemFetchTool ([[ChemFetchTool](https://chemfetchtool.streamlit.app/)](https://chemfetchtool.streamlit.app/)).
 2. Choose your input method:
     - Paste your compound names directly into the provided space.
     - Upload a file containing your list of compound names (CSV or TXT format).
