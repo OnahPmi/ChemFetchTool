@@ -111,7 +111,7 @@ with col_b:
     st.session_state.text = None
 
   with col_b2:
-    refresh_button = st.button("**:white[Clear Names]**", type="secondary", on_click=clearTextArea)
+    refresh_button = st.button("**:white[Clear Names]**", type="secondary", on_click=clearTextArea, help="Clear the text area when clicked")
 
   if "uploaded_file" not in st.session_state:
     st.session_state["uploaded_file"] = None
@@ -124,8 +124,7 @@ with col_b:
     uploaded_file_df = pd.read_csv(uploaded_file)
     col_names = uploaded_file_df.columns.tolist()
     st.write("##### :blue[Select Column with molecule names]")
-    mol_names = st.radio("Select Column with molecule names", col_names, index=None, horizontal=True, 
-                         label_visibility="collapsed")
+    mol_names = st.radio("Select Column with molecule names", col_names, index=None, horizontal=True, label_visibility="collapsed")
   
   st.write("##### :blue[Check the properties to be retrieved]")
   col1, col2 = st.columns([1, 1])
@@ -146,8 +145,8 @@ with col_b:
 
   st.divider()
   col1, col2, col3 = st.columns([1, 1, 1])
-  button = col2.button("**:white[Submit Job]**", type="primary")
-  # col1.button('Rerun')
+  button = col2.button("**:white[Submit Job]**", type="primary", help="Submits the requested job to initiate the retrieval process when clicked")
+
   st.divider()
 
 ########################################################################################################################################################
@@ -155,24 +154,35 @@ with col_b:
 ########################################################################################################################################################
 
 with col_a:
-  col11, col22 = st.columns([0.4, 0.6], gap="large")
-  with col11:
-    st.divider()
-    st.title(":rainbow[ChemFetchTool]")
-    st.divider()
-  with col22:
-    st.image("favicon.png", width=None, use_column_width="auto")
-    st.subheader(":rainbow[From molecule names to properties]")
+  # Design 1
+  cola11, cola22 = st.columns([0.56, 0.44], gap="large")
+  cola11.title(":rainbow[ChemFetchTool]")
+  cola11.divider()
+  cola1, cola2 = st.columns([0.4, 0.6], gap="large")
+  cola2.image("favicon.png", width=None, use_column_width="auto")
+  cola2.subheader(":rainbow[From molecule names to properties]")
+  
+  # Design 2
+  # col11, col22 = st.columns([0.5, 0.5], gap="large")
+  # with col11:
+  #   st.divider()
+  #   st.title(":rainbow[ChemFetchTool]")
+  #   st.divider()
+  # with col22:
+  #   st.image("favicon.png", width=None, use_column_width="auto")
+  #   st.subheader(":rainbow[From molecule names to properties]")
 
   st.divider()
+
+  help_text = "Click to download results"
   
   if button:
     try:
       if uploaded_file_df is not None and uploaded_names is not None:
-        st.warning("#### Paste the molecules names or submit a molecule file but NOT both")
+        st.warning("##### Both molecule name(s) and file Provided. Clear text area or remove file but NOT both")
       
       elif uploaded_file_df is None and uploaded_names is None:
-        st.warning("#### Compound names or molecule file MUST be provided but NOT both")
+        st.warning("##### No names or file Provided! Paste molecules names or submit a molecule file but NOT both")
 
       elif uploaded_names is not None:
         if properties:
@@ -182,11 +192,12 @@ with col_a:
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
 
           csv = convert_df(retrieved_properties_df)
-          st.download_button(label="Download Properties as CSV", data=csv, file_name='Retrieved_properties_df.csv', mime='text/csv', type="primary",)
+          st.download_button(label="Download Properties as CSV", data=csv, file_name='Retrieved_properties_df.csv', mime='text/csv', type="primary", 
+                             help=help_text)
 
           st.write(retrieved_properties_df)
         else:
-          st.warning("#### At least one properties must be selected")
+          st.warning("##### At least one properties must be selected")
 
       elif uploaded_file_df is not None:
         if mol_names is not None and properties:
@@ -194,34 +205,34 @@ with col_a:
           retrieved_properties_df = addSNoAsIndex(retrieved_properties_df)
 
           csv = convert_df(retrieved_properties_df)
-          st.download_button(label="Download Properties as CSV", data=csv, file_name='Retrieved_properties_df.csv', mime='text/csv', type="primary",)
+          st.download_button(label="Download Properties as CSV", data=csv, file_name='Retrieved_properties_df.csv', mime='text/csv', type="primary", 
+                             help=help_text)
 
           st.write(retrieved_properties_df)
         else:
-          st.warning("#### The column with molecule names and at least one properties must be selected")
+          st.warning("##### The column with molecule names and at least one properties must be selected")
     except (requests.RequestException, ConnectionError):
-      st.warning("#### Connection error occured. Ensure a stable network connection and resubmit Job!")
+      st.warning("##### Connection error occured. Ensure a stable network connection and resubmit Job!")
     except:
-      st.warning("#### An unknown error occured. Ensure a stable network connection and resubmit Job!")
+      st.warning("##### An unknown error occured. Ensure a stable network connection and resubmit Job!")
 
     st.divider()
 
-  else:
-    st.write("""
-    Scientific articles often list compounds with interesting pharmacological effects, but only by name. This poses a problem for researchers who 
-    need a computer-readable format to analyze these molecules. While searching PubChem for each compound's :blue[SMILES notation] (a machine-friendly 
-    representation) and other properties of choice is possible, it's time-consuming, and may often lead to errors.
+  # else:
+  st.write("""
+  Scientific articles often list compounds with interesting pharmacological effects, but only by name. This poses a problem for researchers who 
+  need a computer-readable format to analyze these molecules. While searching PubChem for each compound's **:blue[SMILES notation]** (a machine-friendly 
+  representation) and other properties of choice is possible, it's time-consuming, and may often lead to errors. To address this inefficiency, the 
+  **:rainbow[ChemFetchTool]** was developed. This freely available software simplifies the process of retrieving compound properties like SMILES, saving 
+  researchers valuable time.
 
-    To address this inefficiency, the :rainbow[ChemFetchTool] was developed. This freely available software simplifies the process of retrieving compound 
-    properties like SMILES, saving researchers valuable time.
+  The **:rainbow[ChemFetchTool]** offers two convenient ways to retrieve compound properties:
 
-    The :rainbow[ChemFetchTool] offers two convenient ways to retrieve compound properties:
-
-    1. **:blue[Paste directly:]** Simply copy and paste the names of your molecules into the designated space in the sidebar.
-    2. **:blue[Upload a file:]** If you have a list of compound names in a CSV or TXT file, upload it in the designated space in the sidebar. 
-    """) 
-    st.write("""
-    You can then select the specific properties you'd like to retrieve. Once you've provided your compounds and chosen the desired properties, 
-    click the **:red[|Submit Job|]** button to initiate the process.
-    """)
-    st.divider()
+  1. **:blue[Paste directly:]** Simply copy and paste the names of your molecules into the designated space in the sidebar.
+  2. **:blue[Upload a file:]** If you have a list of compound names in a CSV or TXT file, upload it in the designated space in the sidebar. 
+  """) 
+  st.write("""
+  You can then select the specific properties you'd like to retrieve. Once you've provided your compounds and chosen the desired properties, 
+  click the **:red[|Submit Job|]** button to initiate the process.
+  """)
+  st.divider()
