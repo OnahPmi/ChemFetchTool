@@ -155,13 +155,13 @@ with col_b:
 ########################################################################################################################################################
 
 with col_a:
-  col11, col22 = st.columns([0.4, 0.6], gap="medium")
+  col11, col22 = st.columns([0.4, 0.6], gap="large")
   with col11:
     st.divider()
     st.title(":rainbow[ChemFetchTool]")
     st.divider()
   with col22:
-    st.image("favicon.png", width=420, use_column_width=True)
+    st.image("favicon.png", width=None, use_column_width="auto")
     st.subheader(":rainbow[From molecule names to properties]")
 
   st.divider()
