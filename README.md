@@ -8,20 +8,20 @@ Researchers, particularly those in cheminformatics, often encounter scientific a
 ChemFetchTool eliminates this tedious process. By leveraging the freely available PubChem PUG REST API, it automates the retrieval of SMILES notation and additional properties, saving researchers valuable time and minimizing errors.
 
 # Features:
-•	Effortlessly retrieve Isomeric SMILES notation, crucial for preserving crucial stereo-chemical information.
-•	User-friendly interface designed for ease of use, eliminating the need for programming knowledge.
-•	Two convenient input methods:
-o	Paste compound names directly into the dedicated section.
-o	Upload a list of compounds in a CSV or TXT file.
-•	Select the specific properties you desire to retrieve, including SMILES notation and more.
+- Effortlessly retrieve Isomeric SMILES notation, crucial for preserving crucial stereo-chemical information.
+- User-friendly interface designed for ease of use, eliminating the need for programming knowledge.
+- Two convenient input methods:
+   - Paste compound names directly into the dedicated section.
+   - Upload a list of compounds in a CSV or TXT file.
+- Select the specific properties you desire to retrieve, including SMILES notation and more.
 
 # How to Use:
-1.	Visit ChemFetchTool (link to be provided upon deployment).
-2.	Choose your input method:
-o	Paste your compound names directly into the provided space.
-o	Upload a file containing your list of compound names (CSV or TXT format).
-3.	Select the desired properties you want to retrieve.
-4.	Click the "Submit Job" button to initiate the process.
+1. Visit ChemFetchTool (link to be provided upon deployment).
+2. Choose your input method:
+ - Paste your compound names directly into the provided space.
+ - Upload a file containing your list of compound names (CSV or TXT format).
+3. Select the desired properties you want to retrieve.
+4. Click the "Submit Job" button to initiate the process.
 
 # Installation (if applicable):
 No installation is required.
@@ -34,11 +34,8 @@ We welcome your feedback and suggestions for further enhancing ChemFetchTool. Fe
 
 # Benefits:
 ChemFetchTool empowers researchers with the following advantages:
-•	Saves significant time compared to manual retrieval.
-•	Minimizes the risk of errors associated with manual data entry.
-•	Streamlines the workflow for cheminformatics tasks.
-
-
+- Saves significant time compared to manual retrieval.
+- Minimizes the risk of errors associated with manual data entry.
+- Streamlines the workflow for cheminformatics tasks.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
