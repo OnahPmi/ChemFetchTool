@@ -240,4 +240,4 @@ with col_a:
 
     Emmanuel Onah. (2024). OnahPmi/ChemFetchTool: ChemFetchTool (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.10850253.
   """)
-    st.divider()
+  st.divider()
