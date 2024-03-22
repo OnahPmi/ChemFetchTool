@@ -155,7 +155,7 @@ with col_b:
 
 with col_a:
   # Design 1
-  st.title(":rainbow[ChemFetchTool: Automate SMILES Retrieval from PubChem]")
+  st.write("## :rainbow[ChemFetchTool: Automate Molecular Properties Retrieval from PubChem]")
   st.divider()
   cola1, cola2 = st.columns([0.4, 0.6], gap="large")
   cola2.image("favicon.png", width=None, use_column_width="auto")
