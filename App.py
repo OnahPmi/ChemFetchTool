@@ -155,10 +155,8 @@ with col_b:
 
 with col_a:
   # Design 1
-  cola11, cola22 = st.columns([0.56, 0.44], gap="large")
-  cola11.title(":rainbow[ChemFetchTool]")
-  cola11.write(":rainbow[Automate SMILES Retrieval from PubChem]")
-  cola11.divider()
+  st.title(":rainbow[ChemFetchTool: Automate SMILES Retrieval from PubChem]")
+  st.divider()
   cola1, cola2 = st.columns([0.4, 0.6], gap="large")
   cola2.image("favicon.png", width=None, use_column_width="auto")
   cola2.subheader(":rainbow[From molecule names to properties]")
