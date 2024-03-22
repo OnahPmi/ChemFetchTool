@@ -237,7 +237,7 @@ with col_a:
 
   st.divider()
 
-col1, col2, col3 = st.columns([.1, .8, .1])
+col1, col2, col3 = st.columns([.15, .7, .15])
 with col2:
   st.markdown("""       
   #### Further information:  
