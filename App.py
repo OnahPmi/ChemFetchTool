@@ -237,32 +237,63 @@ with col_a:
 
   st.divider()
 
-with st.container():
-    st.markdown("""       
-    #### Further information:  
+col1, col2, col3 = st.columns([.1, .8, .1])
+with col2:
+  st.markdown("""       
+  #### Further information:  
+              
+    **References**:      
+    Kim S, Thiessen PA, Bolton EE. Programmatic Retrieval of Small Molecule Information from PubChem Using PUG-REST. In Kutchukian PS, 
+    ed. Chemical Biology Informatics and Modeling. Methods in Pharmacology and Toxicology. New York, NY: Humana Press, 2018, pp. 1-24. 
+    [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
+  
+    * The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
+      various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
+      include:  
+      * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, De Siqueira-Neto JL, Ntie-Kang F and Ramanathan, K. Potential 
+        Dual Inhibitors of Hexokinases and Mitochondrial Complex I Discovered Through Machine Learning Approach. Available at SSRN:  
+        [https://dx.doi.org/10.2139/ssrn.4635544](https://dx.doi.org/10.2139/ssrn.4635544)
+      * **Onah E**, Uzor PF, Ugwoke IC, Eze JU, Ugwuanyi ST, Chukwudi IR, Ibezim A. Prediction of HIV-1 protease cleavage site 
+        from octapeptide sequence information using selected classifiers and hybrid descriptors. BMC Bioinformatics. 2022 Nov 
+        8;23(1):466. PMID: 36344934. PMCID: 9641908.  
+        [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9641908/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9641908/). 
+      * Ibezim A, **Onah E**, Dim EN, Ntie-Kang F. A computational multi-targeting approach for drug repositioning for psoriasis 
+        treatment. BMC Complement Med Ther. 2021 Jul 5;21(1):193. PMID: 34225727. PMCID: 8258956.  
+        [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8258956/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8258956/).
+      * **Onah, E**., Ugwoke, I., Eze, U., Eze, H., Musa, S., Ndiana-Abasi, S., Okoli, O., Ekeh, I., & Edet, A. (2021). 
+        Search for Structural Scaffolds Against SARS-COV-2 Mpro: An In Silico Study. Journal of Fundamental and Applied 
+        Sciences, 13(2), 740-769.   
+        [https://jfas.info/index.php/JFAS/article/view/987](https://jfas.info/index.php/JFAS/article/view/987).
+        """)
+  st.markdown("""#### If you make use of **:rainbow[ChemFetchTool]** in your work, please cite it as follows:  
+  Onah, E. (2024). ChemFetchTool: Automate Molecular Properties Retrieval from PubChem (Version 1.1.0) Zenodo. https://doi.org/10.5281/zenodo.10850870.""")
+
+# with st.container():
+#     st.markdown("""       
+#     #### Further information:  
                 
-     **References**:      
-     Kim S, Thiessen PA, Bolton EE. Programmatic Retrieval of Small Molecule Information from PubChem Using PUG-REST. In Kutchukian PS, 
-     ed. Chemical Biology Informatics and Modeling. Methods in Pharmacology and Toxicology. New York, NY: Humana Press, 2018, pp. 1-24. 
-     [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
+#      **References**:      
+#      Kim S, Thiessen PA, Bolton EE. Programmatic Retrieval of Small Molecule Information from PubChem Using PUG-REST. In Kutchukian PS, 
+#      ed. Chemical Biology Informatics and Modeling. Methods in Pharmacology and Toxicology. New York, NY: Humana Press, 2018, pp. 1-24. 
+#      [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
     
-     * The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
-       various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
-       include:  
-        * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, De Siqueira-Neto JL, Ntie-Kang F and Ramanathan, K. Potential 
-          Dual Inhibitors of Hexokinases and Mitochondrial Complex I Discovered Through Machine Learning Approach. Available at SSRN:  
-          [https://dx.doi.org/10.2139/ssrn.4635544](https://dx.doi.org/10.2139/ssrn.4635544)
-        * **Onah E**, Uzor PF, Ugwoke IC, Eze JU, Ugwuanyi ST, Chukwudi IR, Ibezim A. Prediction of HIV-1 protease cleavage site 
-          from octapeptide sequence information using selected classifiers and hybrid descriptors. BMC Bioinformatics. 2022 Nov 
-          8;23(1):466. PMID: 36344934. PMCID: 9641908.  
-          [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9641908/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9641908/). 
-        * Ibezim A, **Onah E**, Dim EN, Ntie-Kang F. A computational multi-targeting approach for drug repositioning for psoriasis 
-          treatment. BMC Complement Med Ther. 2021 Jul 5;21(1):193. PMID: 34225727. PMCID: 8258956.  
-          [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8258956/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8258956/).
-        * **Onah, E**., Ugwoke, I., Eze, U., Eze, H., Musa, S., Ndiana-Abasi, S., Okoli, O., Ekeh, I., & Edet, A. (2021). 
-          Search for Structural Scaffolds Against SARS-COV-2 Mpro: An In Silico Study. Journal of Fundamental and Applied 
-          Sciences, 13(2), 740-769.   
-          [https://jfas.info/index.php/JFAS/article/view/987](https://jfas.info/index.php/JFAS/article/view/987).
-          """)
-    st.markdown("""#### If you make use of **:rainbow[ChemFetchTool]** in your work, please cite it as follows:  
-    Onah, E. (2024). ChemFetchTool: Automate Molecular Properties Retrieval from PubChem (Version 1.1.0) Zenodo. https://doi.org/10.5281/zenodo.10850870.""")
+#      * The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
+#        various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
+#        include:  
+#         * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, De Siqueira-Neto JL, Ntie-Kang F and Ramanathan, K. Potential 
+#           Dual Inhibitors of Hexokinases and Mitochondrial Complex I Discovered Through Machine Learning Approach. Available at SSRN:  
+#           [https://dx.doi.org/10.2139/ssrn.4635544](https://dx.doi.org/10.2139/ssrn.4635544)
+#         * **Onah E**, Uzor PF, Ugwoke IC, Eze JU, Ugwuanyi ST, Chukwudi IR, Ibezim A. Prediction of HIV-1 protease cleavage site 
+#           from octapeptide sequence information using selected classifiers and hybrid descriptors. BMC Bioinformatics. 2022 Nov 
+#           8;23(1):466. PMID: 36344934. PMCID: 9641908.  
+#           [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9641908/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9641908/). 
+#         * Ibezim A, **Onah E**, Dim EN, Ntie-Kang F. A computational multi-targeting approach for drug repositioning for psoriasis 
+#           treatment. BMC Complement Med Ther. 2021 Jul 5;21(1):193. PMID: 34225727. PMCID: 8258956.  
+#           [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8258956/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8258956/).
+#         * **Onah, E**., Ugwoke, I., Eze, U., Eze, H., Musa, S., Ndiana-Abasi, S., Okoli, O., Ekeh, I., & Edet, A. (2021). 
+#           Search for Structural Scaffolds Against SARS-COV-2 Mpro: An In Silico Study. Journal of Fundamental and Applied 
+#           Sciences, 13(2), 740-769.   
+#           [https://jfas.info/index.php/JFAS/article/view/987](https://jfas.info/index.php/JFAS/article/view/987).
+#           """)
+#     st.markdown("""#### If you make use of **:rainbow[ChemFetchTool]** in your work, please cite it as follows:  
+#     Onah, E. (2024). ChemFetchTool: Automate Molecular Properties Retrieval from PubChem (Version 1.1.0) Zenodo. https://doi.org/10.5281/zenodo.10850870.""")
