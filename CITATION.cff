@@ -6,7 +6,7 @@ authors:
 - family-names: "Onah"
   given-names: "Emmanuel"
   orcid: "https://orcid.org/0000-0003-2201-7607"
-title: "ChemFetchTool"
+title: "ChemFetchTool: Automate SMILES Retrieval from PubChem"
 version: 1.1.0
 doi: 10.5281/zenodo.10850870
 date-released: 2024-03-22

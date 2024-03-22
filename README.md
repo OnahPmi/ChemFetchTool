@@ -44,4 +44,4 @@ ChemFetchTool empowers researchers with the following advantages:
 ## Citation: [![DOI](https://zenodo.org/badge/774332379.svg)](https://doi.org/10.5281/zenodo.10850870)
 **If you make use of ChemFetchTool in your work, please cite it as follows:**
 
-**Onah, E. (2024). ChemFetchTool (Version 1.1.0) [Computer software]. https://doi.org/10.5281/zenodo.10850870.**
+**●	Onah E. (2024). ChemFetchTool: Automate SMILES Retrieval from PubChem (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.10850870.**
