@@ -234,9 +234,7 @@ with col_a:
   You can then select the specific properties you'd like to retrieve. Once you've provided your compounds and chosen the desired properties, 
   click the **:red[|Submit Job|]** button to initiate the process.
   """)
-  st.write("""
-    If you make use of **:rainbow[ChemFetchTool]** in your work, cite it as follows:
-
-    **Onah, E. (2024). ChemFetchTool: Automate Molecular Properties Retrieval from PubChem (Version 1.1.0) Zenodo. https://doi.org/10.5281/zenodo.10850870.**
-  """)
+  st.markdown("""### If you make use of **:rainbow[ChemFetchTool]** in your work, cite it as follows:
+  **Onah, E. (2024). ChemFetchTool: Automate Molecular Properties Retrieval from PubChem (Version 1.1.0) Zenodo. https://doi.org/10.5281/zenodo.10850870.**""")
+  
   st.divider()
