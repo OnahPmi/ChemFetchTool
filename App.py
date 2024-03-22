@@ -240,7 +240,7 @@ with col_a:
 col1, col2, col3 = st.columns([.15, .7, .15])
 with col2:
   st.markdown("""       
-  #### Further information:  
+  ### Further information:  
               
     **References**:      
     Kim S, Thiessen PA, Bolton EE. Programmatic Retrieval of Small Molecule Information from PubChem Using PUG-REST. In Kutchukian PS, 
