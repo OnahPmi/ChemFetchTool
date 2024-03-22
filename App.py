@@ -242,12 +242,12 @@ with col2:
   st.markdown("""       
   ### Further information:  
               
-    #### References      
+  #### References  
     * Kim S, Thiessen PA, Bolton EE. Programmatic Retrieval of Small Molecule Information from PubChem Using PUG-REST. In Kutchukian PS, 
       ed. Chemical Biology Informatics and Modeling. Methods in Pharmacology and Toxicology. New York, NY: Humana Press, 2018, pp. 1-24. 
       [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
               
-    #### Publications  
+  #### Publications  
     The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
     various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
     include:    
