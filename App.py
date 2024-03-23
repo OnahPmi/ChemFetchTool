@@ -253,7 +253,7 @@ with col2:
         octapeptide descriptors (amino acid binary profile (AABP), physicochemical properties and bond composition) calculations for various 
         machine/deep learning applications in bioinformatics.
               
-  #### Authors Publications  
+  #### Authors' Publications  
    > The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
      various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
      include:    
