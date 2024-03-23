@@ -248,7 +248,7 @@ with col2:
       [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
 
   ### Links to Other Works 
-    * [:rainbow[HIV1-LogRex Webserver: Accelerate HIV-1 Protease Inhibitor Discovery]](https://hiv-1-logrex.streamlit.app/).  
+    * ##### [:blue[HIV1-LogRex Webserver: Accelerate HIV-1 Protease Inhibitor Discovery]](https://hiv-1-logrex.streamlit.app/).  
     HIV1-LogRex implements the logistic regression model for HIV-1 protease octapeptide cleavage site prediction and varied algorithms for 
     octapeptide descriptors (amino acid binary profile (AABP), physicochemical properties and bond composition) calculations for various 
     machine/deep learning applications in bioinformatics.
