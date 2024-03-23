@@ -247,11 +247,11 @@ with col2:
       ed. Chemical Biology Informatics and Modeling. Methods in Pharmacology and Toxicology. New York, NY: Humana Press, 2018, pp. 1-24. 
       [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
 
-  ### Links to Other Works 
-    * ##### [:blue[HIV1-LogRex Webserver: Accelerate HIV-1 Protease Inhibitor Discovery]](https://hiv-1-logrex.streamlit.app/).  
-    HIV1-LogRex implements the logistic regression model for HIV-1 protease octapeptide cleavage site prediction and varied algorithms for 
-    octapeptide descriptors (amino acid binary profile (AABP), physicochemical properties and bond composition) calculations for various 
-    machine/deep learning applications in bioinformatics.
+  ### Links to Other Tools by the same author 
+    * ###### [:blue[HIV1-LogRex Webserver: Accelerate HIV-1 Protease Inhibitor Discovery]](https://hiv-1-logrex.streamlit.app/).  
+      > HIV1-LogRex implements the logistic regression model for HIV-1 protease octapeptide cleavage site prediction and varied algorithms for 
+        octapeptide descriptors (amino acid binary profile (AABP), physicochemical properties and bond composition) calculations for various 
+        machine/deep learning applications in bioinformatics.
               
   ### Publications  
    > The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
