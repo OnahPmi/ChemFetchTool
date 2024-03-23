@@ -242,15 +242,21 @@ with col2:
   st.markdown("""       
   ### Further information:  
               
-  #### References  
+  ### References  
     * Kim S, Thiessen PA, Bolton EE. Programmatic Retrieval of Small Molecule Information from PubChem Using PUG-REST. In Kutchukian PS, 
       ed. Chemical Biology Informatics and Modeling. Methods in Pharmacology and Toxicology. New York, NY: Humana Press, 2018, pp. 1-24. 
       [[Full Text]](https://link.springer.com/protocol/10.1007/7653_2018_30).
+
+  ### Links to Other Works 
+    * [:rainbow[HIV1-LogRex Webserver: Accelerate HIV-1 Protease Inhibitor Discovery]](https://hiv-1-logrex.streamlit.app/).  
+    HIV1-LogRex implements the logistic regression model for HIV-1 protease octapeptide cleavage site prediction and varied algorithms for 
+    octapeptide descriptors (amino acid binary profile (AABP), physicochemical properties and bond composition) calculations for various 
+    machine/deep learning applications in bioinformatics.
               
-  #### Publications  
-    The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
-    various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
-    include:    
+  ### Publications  
+   > The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
+     various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
+     include:    
     * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, De Siqueira-Neto JL, Ntie-Kang F and Ramanathan, K. Potential 
       Dual Inhibitors of Hexokinases and Mitochondrial Complex I Discovered Through Machine Learning Approach. Available at SSRN:  
       [https://dx.doi.org/10.2139/ssrn.4635544](https://dx.doi.org/10.2139/ssrn.4635544)
