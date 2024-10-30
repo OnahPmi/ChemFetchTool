@@ -258,7 +258,7 @@ with col2:
      various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
      include:    
     * **Onah E**, Eze UJ, Abdulraheem AS, Ezigbo UG, Amorha KC. Optimizing Unsupervised Feature Engineering and Predictive Models for 
-      Thyroid Cancer Recurrence Prediction. Preprints 2024, 2024092121. 
+      Thyroid Cancer Recurrence Prediction. Preprints 2024, 2024092121.   
       [https://doi.org/10.20944/preprints202409.2121.v1](https://doi.org/10.20944/preprints202409.2121.v1).
     * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, de Siqueira-Neto JL, Ntie-Kang F, & Ramanathan K. Potential dual 
       inhibitors of Hexokinases and mitochondrial complex I discovered through machine learning approach. Scientific African, 2024, 24, e02226  
