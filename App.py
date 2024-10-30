@@ -257,9 +257,12 @@ with col2:
    > The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
      various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
      include:    
-    * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, De Siqueira-Neto JL, Ntie-Kang F and Ramanathan, K. Potential 
-      Dual Inhibitors of Hexokinases and Mitochondrial Complex I Discovered Through Machine Learning Approach. Available at SSRN:  
-      [https://dx.doi.org/10.2139/ssrn.4635544](https://dx.doi.org/10.2139/ssrn.4635544)
+    * **Onah E**, Eze UJ, Abdulraheem AS, Ezigbo UG, Amorha KC. Optimizing Unsupervised Feature Engineering and Predictive Models for 
+      Thyroid Cancer Recurrence Prediction. Preprints 2024, 2024092121. 
+      [https://doi.org/10.20944/preprints202409.2121.v1](https://doi.org/10.20944/preprints202409.2121.v1).
+    * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, de Siqueira-Neto JL, Ntie-Kang F, & Ramanathan K. Potential dual 
+      inhibitors of Hexokinases and mitochondrial complex I discovered through machine learning approach. Scientific African, 2024, 24, e02226  
+      [https://doi.org/10.1016/j.sciaf.2024.e02226](https://doi.org/10.1016/j.sciaf.2024.e02226).
     * **Onah E**, Uzor PF, Ugwoke IC, Eze JU, Ugwuanyi ST, Chukwudi IR, Ibezim A. Prediction of HIV-1 protease cleavage site 
       from octapeptide sequence information using selected classifiers and hybrid descriptors. BMC Bioinformatics. 2022 Nov 
       8;23(1):466. PMID: 36344934. PMCID: 9641908.  
