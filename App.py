@@ -115,8 +115,8 @@ with col_b:
 
   if "uploaded_file" not in st.session_state:
     st.session_state["uploaded_file"] = None
-  st.write("##### :blue[Or Choose a file] :red[(Must be a CSV or TXT file)]")
-  uploaded_file = st.file_uploader("Or Choose a file", type=['csv', 'txt'], label_visibility="collapsed")
+  st.write("##### :blue[Or Choose a file] :red[(Must be a CSV file)]")
+  uploaded_file = st.file_uploader("Or Choose a file", type='csv', label_visibility="collapsed")
   if uploaded_file:
     st.session_state["uploaded_file"] = uploaded_file
 
