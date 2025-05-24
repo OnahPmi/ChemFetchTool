@@ -257,8 +257,9 @@ with col2:
    > The authors have published a number of works in the _in silico_ drug design/bioinformatics and chemoinformatics domains spanning across
      various disease conditions like `Cancer`, `Infectious Diseases`, and `Neurodegenerative Disorders`. Notable examples
      include:    
-    * **Onah E**, Eze UJ, Abdulraheem AS, Ezigbo UG, Amorha KC. Optimizing Unsupervised Feature Engineering and Predictive Models for 
-      Thyroid Cancer Recurrence Prediction. Preprints 2024, 2024092121.   
+    * **Onah, E.**, Eze U. J., Abdulraheem, A. S., Ezigbo, U. G., Amorha, K. C., & Ntie-Kang, F. (2025). Optimizing unsupervised feature engineering 
+      and classification pipelines for differentiated thyroid cancer recurrence prediction. BMC medical informatics and decision making, 25(1), 
+      182. doi: 10.1186/s12911-025-03018-3.       
       [https://doi.org/10.20944/preprints202409.2121.v1](https://doi.org/10.20944/preprints202409.2121.v1).
     * Ibezim A, **Onah E**, Osigwe SC, Okoroafor PU, Ukoha OP, de Siqueira-Neto JL, Ntie-Kang F, & Ramanathan K. Potential dual 
       inhibitors of Hexokinases and mitochondrial complex I discovered through machine learning approach. Scientific African, 2024, 24, e02226  
